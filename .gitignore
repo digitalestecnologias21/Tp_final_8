@@ -1,0 +1,4 @@
+.DS_Store
+*.sql
+
+# Evitamos subir el archivo .sql de la base de datos por seguridad y peso)

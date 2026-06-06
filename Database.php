@@ -1,6 +1,6 @@
 <?php
 class Database {
-    private $host = "localhost";   // Servidor de base de datos
+    private $host = "host.docker.internal"; // Servidor de base de datos
     private $db_name = "universidad_eventos"; // Nombre de la base
     private $username = "root";    // Usuario por defecto en XAMPP
     private $password = "";        // Contraseña (vacía por defecto en XAMPP)

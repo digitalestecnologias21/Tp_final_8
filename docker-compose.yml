@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  web:
+    image: php:8.0-apache # O la versión de PHP que uses
+    container_name: tp_final_web
+    volumes:
+      - .:/var/www/html
+    ports:
+      - "8080:80" # 👈 MAPEAMOS AL PUERTO 8080 PARA NO PISAR XAMPP
+    extra_hosts:
+      - "host.docker.internal:host-gateway" # 👈 LA MAGIA PARA VER TU MYSQL LOCAL
+#  Probar pagina web http://localhost:8080/pages/login.html
