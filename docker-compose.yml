@@ -1,13 +1,15 @@
-version: '3.8'
 
 services:
   web:
-    image: php:8.0-apache # O la versión de PHP que uses
+    image: php:8.1-apache # O la versión de PHP que uses
     container_name: tp_final_web
+    command: >
+      sh -c "docker-php-ext-install pdo pdo_mysql && apache2-foreground"
     volumes:
       - .:/var/www/html
     ports:
-      - "8080:80" # 👈 MAPEAMOS AL PUERTO 8080 PARA NO PISAR XAMPP
+      - "8081:80" # 👈 MAPEAMOS AL PUERTO 8080 PARA NO PISAR XAMPP
     extra_hosts:
       - "host.docker.internal:host-gateway" # 👈 LA MAGIA PARA VER TU MYSQL LOCAL
-#  Probar pagina web http://localhost:8080/pages/login.html
+
+#  Probar pagina web hhttp://localhost:8081/

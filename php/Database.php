@@ -18,11 +18,8 @@ class Database {
             // Configuramos PDO para que lance excepciones si hay errores
             $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch(PDOException $e) {
-            echo "Error de conexión: " . $e->getMessage();
+            exit("Error de conexión: " . $e->getMessage());
         }
         return $this->conn;
     }
 }
-?>
-
-

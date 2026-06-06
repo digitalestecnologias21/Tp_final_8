@@ -55,8 +55,8 @@ class Evento {
             return "Ya existe un evento con ese título y fecha.";
         }
 
-        $query = "INSERT INTO eventos (titulo, descripcion, fecha, ubicacion, capacidad, creador_id, asistencia_habilitada) 
-                  VALUES (:titulo, :descripcion, :fecha, :ubicacion, :capacidad, :creador_id, 0)";
+        $query = "INSERT INTO eventos (titulo, descripcion, fecha, ubicacion, capacidad, creador_id) 
+                  VALUES (:titulo, :descripcion, :fecha, :ubicacion, :capacidad, :creador_id)";
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(":titulo", $titulo);
         $stmt->bindParam(":descripcion", $descripcion);
