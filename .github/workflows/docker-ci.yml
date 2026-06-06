@@ -1,0 +1,29 @@
+name: Docker CI
+
+# El Action se ejecutará cada vez que hagas un "push" o un "pull request" a la rama main
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    # 1. Descarga el código de tu repositorio en el servidor de GitHub
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    # 2. Levanta tu entorno con Docker Compose en los servidores de GitHub
+    - name: Build and Start Docker Containers
+      run: docker compose up -d
+
+    # 3. Verifica que el contenedor esté corriendo bien
+    - name: Check running containers
+      run: docker compose ps
+
+    # 4. (Opcional) Revisa que no haya errores de sintaxis graves en tus archivos PHP
+    - name: Lint PHP files
+      run: docker compose exec -T web find . -name "*.php" -exec php -l {} \;
