@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Administrador</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+
+<header>
+
+    <a href="../index.html">
+        <img src="../img/logo.png" alt="Logo" class="logo">
+    </a>
+
+    <nav>
+        <a href="../index.html">Inicio</a>
+        <a href="#">Cerrar sesión</a>
+    </nav>
+
+</header>
+
+<section class="admin-container">
+
+    <div class="dashboard-header">
+
+        <div>
+            <h1>Dashboard Administrador</h1>
+            <p>Gestiona y administra los eventos universitarios.</p>
+        </div>
+
+        <div class="fecha-actual">
+            <span id="fechaActual"></span>
+        </div>
+
+    </div>
+
+    <div class="card-admin">
+
+        <h2>Crear Evento</h2>
+
+        <form id="formEvento">
+
+            <input
+                type="text"
+                id="titulo"
+                placeholder="Título del evento"
+                required
+            >
+
+            <textarea
+                id="descripcion"
+                placeholder="Descripción del evento"
+                required
+            ></textarea>
+
+            <input
+                type="date"
+                id="fecha"
+                required
+            >
+
+            <input
+                type="text"
+                id="ubicacion"
+                placeholder="Ubicación"
+                required
+            >
+
+            <input
+                type="number"
+                id="capacidad"
+                placeholder="Capacidad"
+                required
+            >
+
+            <button type="submit">
+                Crear Evento
+            </button>
+
+        </form>
+
+    </div>
+
+    <div class="card-admin">
+
+        <div class="tabla-header">
+
+            <h2>Mis Eventos</h2>
+
+            <input
+                type="text"
+                id="buscar"
+                placeholder="Buscar evento..."
+            >
+
+        </div>
+
+        <table>
+
+            <thead>
+                <tr>
+                    <th>Título</th>
+                    <th>Fecha</th>
+                    <th>Ubicación</th>
+                    <th>Capacidad</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                <tr>
+                    <td>Hackathon 2026</td>
+                    <td>15/09/2026</td>
+                    <td>Universidad</td>
+                    <td class="capacidad">100</td>
+
+                    <td>
+                        <button class="btn-editar">
+                            Editar
+                        </button>
+
+                        <button class="btn-eliminar">
+                            Eliminar
+                        </button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Conferencia IA</td>
+                    <td>25/09/2026</td>
+                    <td>Auditorio Central</td>
+                    <td class="capacidad">15</td>
+
+                    <td>
+                        <button class="btn-editar">
+                            Editar
+                        </button>
+
+                        <button class="btn-eliminar">
+                            Eliminar
+                        </button>
+                    </td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</section>
+
+<script src="../js/admin.js"></script>
+
+</body>
+</html>

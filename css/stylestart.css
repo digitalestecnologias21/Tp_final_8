@@ -1,0 +1,165 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family: Arial, sans-serif;
+}
+
+header{
+    background:#1f2937;
+    color:white;
+    padding:20px;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    width:130px;
+    height:70px;
+}
+
+
+nav a{
+    color:white;
+    text-decoration:none;
+    margin-left:15px;
+}
+
+/* Inicio section class="hero" */
+
+.hero{
+    height:90vh;
+
+    background-image:url("../img/banner.jpg");
+    background-size:cover;
+    background-position: center;
+    background-repeat:no-repeat;
+
+    display:flex;
+    justify-content:center;
+    align-items:flex-end;
+
+    padding-bottom:130px;
+}
+
+.hero button{
+    padding:12px 30px;
+    font-size:18px;
+    cursor:pointer;
+}
+
+/* Fin de section class="hero" */
+
+/* Inicio de la section class="eventos" donde están las cards */
+
+.eventos{
+    padding:40px;
+}
+
+.eventos h2{
+    text-align:center;
+    margin-bottom:30px;
+}
+
+.eventos-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));
+    gap:25px;
+}
+
+.card{
+    background:#1f2937;
+    color:white;
+
+    border-radius:12px;
+    overflow:hidden;
+
+    box-shadow:0 4px 12px rgba(0,0,0,0.2);
+
+    transition:transform 0.3s ease,
+               box-shadow 0.3s ease;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+    box-shadow:0 8px 20px rgba(0,0,0,0.3);
+}
+
+.card img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+}
+
+.card h3{
+    margin:15px;
+}
+
+.card p{
+    margin:0 15px 15px;
+}
+
+.detalle{
+    display:none;
+    margin:15px;
+    padding:15px;
+    background:#374151;
+    color:white;
+    border-radius:5px;
+}
+
+.detalle.visible{
+    display:block;
+}
+
+.btn-info{
+    display:block;
+    margin:15px auto;
+    padding:10px 20px;
+    border:none;
+    border-radius:6px;
+    background:#3b82f6;
+    color:white;
+    cursor:pointer;
+    transition:background 0.3s;
+}
+
+.btn-info:hover{
+    background:#2563eb;
+}
+
+/* Fin de la section class="eventos" */
+
+footer{
+    background:#1f2937;
+    color:white;
+    text-align:center;
+    padding:15px;
+}
+
+
+/* Responsive */
+
+@media (max-width:768px){
+
+    header{
+        flex-direction:column;
+        gap:15px;
+    }
+
+    nav{
+        display:flex;
+        flex-wrap:wrap;
+        justify-content:center;
+    }
+
+    .hero{
+        height:50vh;
+        padding-bottom:40px;
+    }
+}

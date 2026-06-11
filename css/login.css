@@ -13,18 +13,24 @@ body{
     justify-content:center;
     align-items:center;
 
+    padding:20px;
+
     background:#f4f4f4;
 }
 
+
+
+/* Inicio Formulario */
+
 .login-card{
 
-    width:400px;
-    max-width:90%;
+    width:100%;
+    max-width:400px;
 
     background:#1f2937;
     color:white;
 
-    padding:30px;
+    padding:50px;
 
     border-radius:12px;
 
@@ -34,16 +40,16 @@ body{
 }
 
 .logo{
-    width:120px;
-    margin-bottom:20px;
+    width:130px;
+    height:70px;
+    cursor:pointer;
 }
 
 .login-card h2{
-    margin-bottom:25px;
+    margin:40px 50px;
 }
 
-.login-card input{
-
+input{
     width:100%;
 
     padding:12px;
@@ -56,8 +62,7 @@ body{
     font-size:16px;
 }
 
-.login-card button{
-
+button{
     width:100%;
 
     padding:12px;
@@ -68,18 +73,23 @@ body{
     background:#3b82f6;
     color:white;
 
-    font-size:16px;
-
     cursor:pointer;
-
-    transition:0.3s;
 }
 
-.login-card button:hover{
-    background:#2563eb;
-}
+/* Fin Formulario */
 
-#mensaje{
-    margin-top:15px;
-    font-weight:bold;
+@media (max-width:768px){
+
+    .login-card{
+        padding:20px;
+    }
+
+    .logo{
+        width:90px;
+    }
+
+    .login-card h2{
+        font-size:1.5rem;
+    }
+
 }

@@ -12,4 +12,4 @@ services:
     extra_hosts:
       - "host.docker.internal:host-gateway" # 👈 LA MAGIA PARA VER TU MYSQL LOCAL
 
-#  Probar pagina web hhttp://localhost:8081/
+#  Probar pagina web http://localhost:8081/

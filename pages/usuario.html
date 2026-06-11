@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Usuario</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/usuario.css">
+</head>
+<body>
+
+<header>
+
+    <a href="../index.html">
+        <img src="../img/logo.png" alt="Logo" class="logo">
+    </a>
+
+    <nav>
+        <a href="../index.html">Inicio</a>
+        <a href="#">Mis Inscripciones</a>
+        <a href="#">Cerrar sesión</a>
+    </nav>
+
+</header>
+
+<section class="usuario-container">
+
+    <div class="dashboard-header">
+
+        <div>
+            <h1>Dashboard de Usuario</h1>
+            <p>
+                Explora los eventos disponibles e inscríbete fácilmente.
+            </p>
+        </div>
+
+        <div class="fecha-actual">
+            <span id="fechaActual"></span>
+        </div>
+
+    </div>
+
+    <div class="card-usuario">
+
+        <div class="tabla-header">
+
+            <h2>Eventos Disponibles</h2>
+
+            <input
+                type="text"
+                id="buscar"
+                placeholder="Buscar evento..."
+            >
+
+        </div>
+
+        <table>
+
+            <thead>
+                <tr>
+                    <th>Título</th>
+                    <th>Descripción</th>
+                    <th>Fecha</th>
+                    <th>Ubicación</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                <tr>
+                    <td>Hackathon 2026</td>
+                    <td>Competencia de desarrollo e innovación.</td>
+                    <td>15/09/2026</td>
+                    <td>Universidad</td>
+
+                    <td>
+                        <button class="btn-inscribirse">
+                            Inscribirse
+                        </button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Conferencia IA</td>
+                    <td>Tendencias en Inteligencia Artificial.</td>
+                    <td>25/09/2026</td>
+                    <td>Auditorio Central</td>
+
+                    <td>
+                        <button class="btn-inscribirse">
+                            Inscribirse
+                        </button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Feria Tecnológica</td>
+                    <td>Exposición de proyectos innovadores.</td>
+                    <td>05/10/2026</td>
+                    <td>Pabellón Principal</td>
+
+                    <td>
+                        <button class="btn-inscribirse">
+                            Inscribirse
+                        </button>
+                    </td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</section>
+
+<script src="../js/usuario.js"></script>
+
+</body>
+</html>
