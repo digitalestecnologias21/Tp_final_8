@@ -13,3 +13,10 @@ scrape_configs:
   - job_name: 'mysql-exporter'
     static_configs:
       - targets: ['mysql-exporter:9104']
+
+# Recolecta, extrae metricas y las almacena en su base de datos de manera cronologica.
+# CAdvisor y MySQL Exporter: Son agentes que extraen los datos en bruto.
+# Prometheus: Es el motor central. Se encarga de "viajar" cada 15 segundos hacia los recolectores, 
+# extraer esas métricas y almacenarlas en una base de datos cronológica (ordenada por tiempo)
+# Grafana: Se conecta a Prometheus para transformar esos miles de números abstractos en gráficos de líneas, 
+# barras y alertas visuales fáciles de entender

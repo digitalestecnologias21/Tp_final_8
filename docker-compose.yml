@@ -1,4 +1,5 @@
-
+# contenedor de servidor web (Apache con PHP) listo para desplegar  
+# y desarrollar tu aplicación del Trabajo Práctico Final
 services:
   web:
     image: php:8.1-apache # O la versión de PHP que uses
@@ -12,9 +13,7 @@ services:
     extra_hosts:
       - "host.docker.internal:host-gateway" # 👈 LA MAGIA PARA VER TU MYSQL LOCAL
 
-  # Prometheus: El motor que recolecta las métricas probar http://localhost:9090
-  
-  # 1. cAdvisor: Monitorización de contenedores (Acceso: http://localhost:8082)
+# Observabilidad y Monitoreo en Tiempo Real.
   cadvisor:
     image: gcr.io/cadvisor/cadvisor:v0.49.1
     container_name: cadvisor
@@ -30,7 +29,7 @@ services:
     devices:
       - /dev/kmsg:/dev/kmsg
 
-  # 2. Prometheus: Base de datos de métricas (Acceso: http://localhost:9090)
+  
   prometheus:
     image: prom/prometheus:latest
     container_name: prometheus
@@ -42,9 +41,7 @@ services:
     extra_hosts:
       - "host.docker.internal:host-gateway"
 
-  # 3. Grafana: Interfaz visual de gráficos (Acceso: http://localhost:3000)
-  # RECUERDA: En la web de Grafana, la URL de Prometheus debe ser http://prometheus:9090
-    # 3. Grafana: Interfaz visual de gráficos (Acceso: http://localhost:3000)
+
   grafana:
     image: grafana/grafana:latest
     container_name: grafana
@@ -59,8 +56,6 @@ services:
     extra_hosts:
       - "host.docker.internal:host-gateway"
 
-
-  # 4. MySQL Exporter: Conexión con tu base de datos XAMPP local
   mysql-exporter:
     image: prom/mysqld-exporter:latest
     container_name: mysql-exporter
@@ -71,3 +66,10 @@ services:
     restart: unless-stopped
     extra_hosts:
       - "host.docker.internal:host-gateway"
+
+# 1. cAdvisor: Monitorización de contenedores (Acceso: http://localhost:8082)
+# 2. Prometheus: Base de datos de métricas (Acceso: http://localhost:9090)
+# 3. Grafana: Interfaz visual de gráficos (Acceso: http://localhost:3000)
+# 4. server web: Interfaz visual de la pagina web:(Acceso: http://localhost:8081)
+# 5. Base de datos Mysql: Interfaz visual de la Base de datos (Acceso: http://localhost/phpmyadmin/index.php?route=/server/databases)
+# 6. github: Url Repositorio:(Acceso: Git clone: https://github.com/digitalestecnologias21/Tp_final_8.git)
