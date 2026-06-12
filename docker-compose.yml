@@ -13,6 +13,24 @@ services:
       - "host.docker.internal:host-gateway" # 👈 LA MAGIA PARA VER TU MYSQL LOCAL
 
   # Prometheus: El motor que recolecta las métricas probar http://localhost:9090
+  
+  # 1. cAdvisor: Monitorización de contenedores (Acceso: http://localhost:8082)
+  cadvisor:
+    image: gcr.io/cadvisor/cadvisor:v0.49.1
+    container_name: cadvisor
+    restart: unless-stopped
+    ports:
+      - "8082:8080"
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:ro
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
+      - /dev/disk/:/dev/disk:ro
+    devices:
+      - /dev/kmsg:/dev/kmsg
+
+  # 2. Prometheus: Base de datos de métricas (Acceso: http://localhost:9090)
   prometheus:
     image: prom/prometheus:latest
     container_name: prometheus
@@ -22,9 +40,11 @@ services:
       - "9090:9090"
     restart: unless-stopped
     extra_hosts:
-      - "host.docker.internal:host-gateway" # 👈 También lo necesita para ver el exporter si hiciera falta
+      - "host.docker.internal:host-gateway"
 
-  # 2.Grafana: La interfaz visual para ver los gráficos Probar con http://localhost:3000/login (admin=charly)
+  # 3. Grafana: Interfaz visual de gráficos (Acceso: http://localhost:3000)
+  # RECUERDA: En la web de Grafana, la URL de Prometheus debe ser http://prometheus:9090
+    # 3. Grafana: Interfaz visual de gráficos (Acceso: http://localhost:3000)
   grafana:
     image: grafana/grafana:latest
     container_name: grafana
@@ -32,18 +52,22 @@ services:
       - "3000:3000"
     environment:
       - GF_SECURITY_ADMIN_PASSWORD=admin
+    volumes:
+      # ESTA LÍNEA INYECTA LA CONFIGURACIÓN CORRECTA DIRECTAMENTE:
+      - ./provisioning/datasources:/etc/grafana/provisioning/datasources
     restart: unless-stopped
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
 
-  # 3. MySQL Exporter: Configurado para apuntar a tu XAMPP local
+
+  # 4. MySQL Exporter: Conexión con tu base de datos XAMPP local
   mysql-exporter:
     image: prom/mysqld-exporter:latest
     container_name: mysql-exporter
     environment:
-      # 1. Usamos 'host.docker.internal' para salir de Docker e ir a tu XAMPP
-      # 2. Deja la contraseña vacía si en tu XAMPP no le pusiste contraseña al root
       DATA_SOURCE_NAME: "root:@(host.docker.internal:3306)/"
     ports:
       - "9104:9104"
-    extra_hosts:
-      - "host.docker.internal:host-gateway" # 👈 LA MAGIA para que el exporter pueda ver tu XAMPP
     restart: unless-stopped
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
