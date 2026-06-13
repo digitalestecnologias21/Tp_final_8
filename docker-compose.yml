@@ -67,6 +67,26 @@ services:
     extra_hosts:
       - "host.docker.internal:host-gateway"
 
+# ... (Tus otros servicios como Grafana, Prometheus, etc.)
+
+  fail2ban-exporter:
+    # Esta imagen es pública, oficial y la más usada para el exporter de fail2ban
+    image: registry.gitlab.com/hctrdev/fail2ban-prometheus-exporter:latest
+    container_name: fail2ban-exporter
+    restart: unless-stopped
+    ports:
+      - "9121:9191" # 👈 OJO AQUÍ: El contenedor escucha internamente en el 9191, lo mapeamos al 9121 de tu TP
+    volumes:
+      # Tip de oro: Es mejor montar la carpeta contenedora porque fail2ban borra y recrea el .sock al reiniciar
+      - /var/run/fail2ban:/var/run/fail2ban:ro
+    networks:
+      - mi_red_externa
+
+networks:
+  mi_red_externa:
+    external: true
+    name: tp_final_8_default
+    
 # 1. cAdvisor: Monitorización de contenedores (Acceso: http://localhost:8082)
 # 2. Prometheus: Base de datos de métricas (Acceso: http://localhost:9090)
 # 3. Grafana: Interfaz visual de gráficos (Acceso: http://localhost:3000)
